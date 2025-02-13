@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import AnimatedLogo from "./AnimatedLogo";
 import { Link } from "react-router-dom";
-// import SignInSignUp from "Auth/SignInSignUp";
+import { Link as ScrollLink } from "react-scroll"; 
 import { UserButton, useAuth } from '@clerk/clerk-react';
 
 const Navbar = () => {
@@ -19,22 +19,27 @@ const Navbar = () => {
 
         {/* Center Section: Menu Items */}
         <ul className="hidden md:flex space-x-8 bg-white px-6 py-2 rounded-full">
-          {["About Us", "Cases", "Reviews", "Contact Us"].map((item, index) => (
+          {["About Us", "Workflow", "Reviews", "Contact Us"].map((item, index) => (
             <motion.li
               key={index}
               className="text-black font-medium cursor-pointer relative hover:text-green-500 transition"
               whileHover={{ scale: 1.1, transition: { duration: 0.3 } }} // Hover Scale
               whileTap={{ scale: 0.9 }} // Click Shrink
             >
-              {item}
-              <motion.div
-                className="absolute left-0 bottom-0 w-full h-[2px] bg-green-500 origin-left"
-                initial={{ scaleX: 0 }}
-                whileHover={{ scaleX: 1, transition: { duration: 0.3 } }}
-              />
+              <ScrollLink
+                to={item.toLowerCase().replace(" ", "-")} // Convert to lowercase & replace spaces
+                smooth={true}
+                duration={500}
+                spy={true}
+                offset={-70} // Adjust for fixed navbar
+                className="cursor-pointer"
+              >
+                {item}
+              </ScrollLink>
             </motion.li>
           ))}
         </ul>
+
 
    {/* Right Section: Buttons */}
    {isSignedIn ? (

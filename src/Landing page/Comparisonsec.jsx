@@ -26,7 +26,7 @@ const stats = [
 
 const ComparisonSection = () => {
   return (
-    <section className="relative py-20 px-10 bg-gray-300 flex items-center justify-center">
+    <section className="relative py-20 px-10 bg-gray-300 flex items-center justify-center" id="reviews">
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between">
         
         {/* Left Side - Feature Cards */}

@@ -10,7 +10,7 @@ const steps = [
 
 const Timeline = () => {
   return (
-    <div className="relative flex flex-col items-center w-full py-20 bg-black text-white overflow-hidden">
+    <div className="relative flex flex-col items-center w-full py-20 bg-black text-white overflow-hidden" id="workflow">
       
       {/* Section Header - Placed ABOVE the Timeline */}
       <motion.div 

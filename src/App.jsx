@@ -12,6 +12,7 @@ import ProtectedRoute from "/Authentication/ProtectedRoute.jsx";
 import { Toaster } from "sonner";
 import AuthNotifier from "/Authentication/AuthNotifier.jsx";
 import Profile from "/src/Dashboard/_Components/Profile.jsx"
+import GetInTouch from "./GetInTouch";
 function App() {
   return (
     <Router>
@@ -36,6 +37,7 @@ function App() {
           <Route path="subscription" element={<PixoraPlus />} />
           <Route path="about" element={<About />} />
           <Route path="Profile" element={<Profile />} />
+         
         </Route>
         {/* <Route path="/generated-code/:id" element={<Generatedcode />} /> */}
         <Route
@@ -46,6 +48,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+         <Route path="contact" element={<GetInTouch />} />
       </Routes>
     </Router>
   );

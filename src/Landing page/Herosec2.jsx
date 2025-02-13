@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
     const titles = ["{ Design Smarter }", "{ Code Faster }", " { Innovate Better }", "{ Build Effortlessly }"];
@@ -13,7 +14,7 @@ const HeroSection = () => {
       return () => clearInterval(interval);
     }, []);
   return (
-    <div className="relative flex flex-col items-center justify-center h-screen bg-black text-white overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center h-screen bg-black text-white overflow-hidden" id="contact-us">
         
       {/* Top Animated Gray Curve */}
     <motion.div
@@ -101,9 +102,11 @@ const HeroSection = () => {
     },
   }}
 >
+<Link to="/contact">
   <span className="relative z-10 font-extrabold tracking-wide drop-shadow-[0_0_5px_#00ff00] text-xl">
     GET IN TOUCH
   </span>
+</Link>
 
   {/* Neon Glow Effect & Pulse Animation */}
   <span className="absolute inset-0 flex items-center justify-center">
