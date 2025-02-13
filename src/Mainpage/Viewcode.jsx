@@ -15,7 +15,7 @@ function Viewcode() {
   useEffect(() => {
     console.log("Fetching generated code for ID:", id);
 
-    axios.get(`http://localhost:5000/generated-code/${id}`)
+    axios.get(`https://pixora-s-backend.onrender.com/generated-code/${id}`)
       .then((response) => {
         console.log("✅ API Response:", response.data);
         setCode(response.data.generatedCode); // Ensure correct field name
