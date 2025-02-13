@@ -10,7 +10,7 @@ import About from "./Dashboard/_Components/About";
 import SignInSignUp from "/Auth/SignInSignUp.jsx";
 import ProtectedRoute from "/Auth/ProtectedRoute";
 import { Toaster } from "sonner";
-import AuthNotifier from "/Auth/Authnotifier";
+import AuthNotifier from "/Auth/AuthNotifier";
 import Profile from "/src/Dashboard/_Components/Profile.jsx"
 function App() {
   return (
