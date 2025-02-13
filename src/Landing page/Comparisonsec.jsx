@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import CircleGraph from "./Circlegraph";
+import CircleGraph from "/src/Landing page/CircleGraph.jsx";
 const stats = [
   {
     number: "+300",
