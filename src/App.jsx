@@ -7,10 +7,10 @@ import Designs from "./Dashboard/_Components/Designs";
 import Viewcode from "./Mainpage/Viewcode";
 import PixoraPlus from "./Dashboard/_Components/PixoraPlus";
 import About from "./Dashboard/_Components/About";
-import SignInSignUp from "/Auth/SignInSignUp.jsx";
-import ProtectedRoute from "/Auth/ProtectedRoute";
+import SignInSignUp from "/Authentication/SignInSignUp.jsx";
+import ProtectedRoute from "/Authentication/ProtectedRoute.jsx";
 import { Toaster } from "sonner";
-import AuthNotifier from "/Auth/AuthNotifier";
+import AuthNotifier from "/Authentication/AuthNotifier.jsx";
 import Profile from "/src/Dashboard/_Components/Profile.jsx"
 function App() {
   return (
