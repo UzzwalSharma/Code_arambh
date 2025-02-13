@@ -15,6 +15,7 @@ export async function generateResponse(userDescription, imageUrl, model) {
     const requestBody = {
       imageUrl: imageUrl,
       userName: "Test User",
+      description: userDescription,
       modelName: model,
       prompt: finalPrompt,
     };
