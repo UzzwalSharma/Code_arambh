@@ -1,5 +1,5 @@
 import axios from "axios";
-import PROMPTS from "./prompts"; // Importing the optimized prompt file
+import PROMPTS from "/Ai models/PROMPTS.jsx"; // Importing the optimized prompt file
 
 export async function generateResponse(userDescription, imageUrl, model) {
   try {
