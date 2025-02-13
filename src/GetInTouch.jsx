@@ -1,62 +1,86 @@
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
-import { FaHome } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaFacebook, FaTwitter, FaInstagram, FaLinkedin, FaHome } from "react-icons/fa";
+import { Link, useNavigate } from "react-router-dom";
+import { useForm, ValidationError } from "@formspree/react";
 
 export default function ContactUs() {
+  const [state, handleSubmit] = useForm("xanqdaok");
+  const [countdown, setCountdown] = useState(5);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (state.succeeded) {
+      const timer = setInterval(() => {
+        setCountdown((prev) => {
+          if (prev === 1) {
+            clearInterval(timer);
+            navigate("/");
+          }
+          return prev - 1;
+        });
+      }, 1000);
+      return () => clearInterval(timer);
+    }
+  }, [state.succeeded, navigate]);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#ebfff2] p-6">
       <div className="bg-white shadow-lg rounded-2xl p-8 max-w-5xl w-full flex">
         {/* Left Side - Contact Form */}
         <div className="w-1/2 pr-6">
           <h2 className="text-4xl font-extrabold text-green-500">Get in Touch</h2>
-          <p className="text-gray-600 mt-2">
-            We are here for you! How can we help?
-          </p>
-
-          <form className="mt-6">
-            <div className="mb-4">
-              <label className="block text-gray-700">Name</label>
+          <p className="text-gray-600 mt-2">We are here for you! How can we help?</p>
+          {state.succeeded ? (
+            <div className="text-center">
+              <h2 className="text-3xl font-bold text-green-400">Thank You!</h2>
+              <p className="text-gray-400 mt-2">Your message has been sent successfully.</p>
+              <p className="text-gray-500">Redirecting in {countdown} seconds...</p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
               <input
                 type="text"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                name="name"
                 placeholder="Your Name"
+                className="w-full p-3 bg-transparent border border-gray-500 rounded-lg text-black outline-none focus:border-green-400"
+                required
               />
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-gray-700">Email</label>
               <input
                 type="email"
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                name="email"
                 placeholder="Your Email"
+                className="w-full p-3 bg-transparent border border-gray-500 rounded-lg text-black outline-none focus:border-green-400"
+                required
               />
-            </div>
-
-            <div className="mb-4">
-              <label className="block text-gray-700">Message</label>
+              <ValidationError prefix="Email" field="email" errors={state.errors} />
               <textarea
-                className="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-500 outline-none"
+                name="message"
                 placeholder="Your Message"
-                rows="4"
+                className="w-full p-3 h-32 bg-transparent border border-gray-500 rounded-lg text-black outline-none focus:border-green-400"
+                required
               ></textarea>
-            </div>
+              <ValidationError prefix="Message" field="message" errors={state.errors} />
+              <button
+                type="submit"
+                className="w-full py-3 bg-green-500 hover:bg-green-600 transition rounded-lg font-semibold text-white"
+                disabled={state.submitting}
+              >
+                {state.submitting ? "Sending..." : "Send Message"}
+              </button>
+            </form>
+          )}
 
-            <button className="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-purple-600 transition">
-              Submit
+          <Link to="/" className="w-full block mt-4">
+            <button className="w-full flex items-center justify-center gap-2 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
+              Back to Home <FaHome className="text-xl" />
             </button>
-            <Link to="/" className="w-full">
-  <button className="w-full mt-3.5 flex items-center justify-center gap-2 bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition">
-   
-    Back to Home <FaHome className="text-xl" />
-  </button>
-</Link>
-          </form>
+          </Link>
         </div>
 
         {/* Right Side - Illustration & Contact Info */}
         <div className="w-1/2 flex flex-col items-center">
           <img
-            src="/marketing-concept-with-laptop.png" // Use an appropriate illustration
+            src="/marketing-concept-with-laptop.png"
             alt="Contact Us"
             className="w-80 mb-6"
           />
@@ -64,7 +88,7 @@ export default function ContactUs() {
           <div className="space-y-4 text-gray-700">
             <div className="flex items-center space-x-3">
               <FaMapMarkerAlt className="text-green-500 text-3xl" />
-              <p>Ghaziabad, UttarPradesh</p>
+              <p>Ghaziabad, Uttar Pradesh</p>
             </div>
 
             <div className="flex items-center space-x-3">
@@ -76,25 +100,24 @@ export default function ContactUs() {
               <FaEnvelope className="text-green-500 text-3xl" />
               <p>uzzwal7505@gmail.com</p>
             </div>
-               {/* Social Icons */}
-          <div className="flex space-x-4 mt-6">
-            <a href="#" className="text-neon-green text-3xl hover:text-green-400 transition">
-              <FaFacebook />
-            </a>
-            <a href="#" className="text-neon-green text-3xl hover:text-green-400 transition">
-              <FaTwitter />
-            </a>
-            <a href="#" className="text-neon-green text-3xl hover:text-green-400 transition">
-              <FaInstagram />
-            </a>
-            <a href="#" className="text-neon-green text-3xl hover:text-green-400 transition">
-              <FaLinkedin />
-            </a>
+
+            {/* Social Icons */}
+            <div className="flex space-x-4 mt-6">
+              <a href="#" className="text-green-500 text-3xl hover:text-green-400 transition">
+                <FaFacebook />
+              </a>
+              <a href="#" className="text-green-500 text-3xl hover:text-green-400 transition">
+                <FaTwitter />
+              </a>
+              <a href="#" className="text-green-500 text-3xl hover:text-green-400 transition">
+                <FaInstagram />
+              </a>
+              <a href="#" className="text-green-500 text-3xl hover:text-green-400 transition">
+                <FaLinkedin />
+              </a>
+            </div>
           </div>
-          </div>
-        
         </div>
-        
       </div>
     </div>
   );
