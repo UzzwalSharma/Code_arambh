@@ -36,9 +36,9 @@ const DesignCard = ({ design }) => {
           e.stopPropagation(); // Prevents interference from parent divs
           navigate(`/generated-code/${design._id}`);
         }}
-        className="w-full mt-4 px-4 py-2 text-center text-black font-semibold bg-green-400 rounded-lg hover:bg-green-500 transition-all duration-300 z-10 relative"
+      className="w-full mt-4 px-5 py-3 text-center text-white font-semibold bg-green-500 rounded-xl hover:bg-green-600 transition-all duration-300 z-10 relative shadow-lg"
       >
-        View Design 🚀
+        View Design
       </button>
 
 
