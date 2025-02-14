@@ -60,3 +60,23 @@ button:focus-visible {
 select:focus {
   background-color: white !important;
 }
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #121212; /* Dark background */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #00ff99, #00d4ff); /* Green & Blue Neon */
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00d4ff, #00ff99);
+}

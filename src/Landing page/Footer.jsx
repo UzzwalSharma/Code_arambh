@@ -7,10 +7,13 @@ const Footer = () => {
     <footer className="bg-black text-white py-10 px-5 md:px-20 relative overflow-hidden">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center">
         {/* Logo & Tagline */}
-        <div className="mb-6 md:mb-0 text-center md:text-left">
-          <h2 className="text-4xl font-bold bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent">
-            Pixora
-          </h2>
+        <div className="mb-6 md:mb-0 flex flex-col items-center md:items-start">
+          <div className="flex items-center space-x-3">
+            <img src="Logo2.jpg" alt="Pixora Logo" className="h-20 w-20 rounded-2xl " />
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-green-400 to-cyan-500 bg-clip-text text-transparent">
+              Pixora
+            </h2>
+          </div>
           <p className="text-gray-400 mt-2 text-sm">Sketch. Convert. Deploy.</p>
         </div>
 
@@ -42,11 +45,15 @@ const Footer = () => {
       {/* Futuristic Glowing Effect */}
       <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 w-[80%] h-[2px] bg-green-400 opacity-50 shadow-[0px_0px_15px_#00ff99]"></div>
 
-      {/* Copyright */}
+      {/* Copyright & Fun Shout-out */}
       <p className="text-center text-gray-500 text-xs mt-6">
         © {new Date().getFullYear()} Pixora. All rights reserved.
       </p>
+      <p className="text-center text-gray-500 text-xs mt-1">
+        Built with ❤️ by <span className="text-green-400 font-black">Ujjwal</span>
+      </p>
     </footer>
+
   );
 };
 
