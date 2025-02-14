@@ -19,7 +19,7 @@ const Navbar = () => {
 
         {/* Center Section: Menu Items */}
         <ul className="hidden md:flex space-x-8 bg-white px-6 py-2 rounded-full">
-          {["About Us", "Workflow", "Reviews", "Contact Us"].map((item, index) => (
+          {["Home", "Workflow", "Reviews", "Contact Us"].map((item, index) => (
             <motion.li
               key={index}
               className="text-black font-medium cursor-pointer relative hover:text-green-500 transition"

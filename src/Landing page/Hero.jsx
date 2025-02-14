@@ -18,7 +18,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="relative w-full h-screen flex flex-col justify-center items-center text-center text-white bg-[#080808] overflow-hidden">
+    <section className="relative w-full h-screen flex flex-col justify-center items-center text-center text-white bg-[#080808] overflow-hidden" id="home">
       {/* Navbar */}
       <Navbar />
 
