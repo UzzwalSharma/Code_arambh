@@ -12,7 +12,7 @@ const DesignCard = ({ design }) => {
         <img
           src={design.imageUrl}
           alt="Design Preview"
-          className="w-48 h-48 object-cover rounded-lg border-4 border-gradient-to-r from-purple-500 via-blue-500 to-green-500 transform group-hover:scale-110 transition-all duration-300"
+          className="w-48 h-48 object-cover rounded-full border-4 border-gradient-to-r from-purple-500 via-blue-500 to-green-500 transform group-hover:scale-110 transition-all duration-300"
         />
       </div>
 
