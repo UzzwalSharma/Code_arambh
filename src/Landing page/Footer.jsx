@@ -49,16 +49,16 @@ const Footer = () => {
 
         {/* Social Media Icons */}
         <div className="flex space-x-8 mt-6 md:mt-0">
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
+          <motion.a whileHover={{ scale: 1.2 }} href="https://x.com/SharmaUjjw10149" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
             <FaTwitter />
           </motion.a>
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
+          <motion.a whileHover={{ scale: 1.2 }} href="https://www.linkedin.com/in/ujjwal-sharma-3a1395279" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
             <FaLinkedin />
           </motion.a>
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
+          <motion.a whileHover={{ scale: 1.2 }} href="https://github.com/UzzwalSharma" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
             <FaGithub />
           </motion.a>
-          <motion.a whileHover={{ scale: 1.2 }} href="#" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
+          <motion.a whileHover={{ scale: 1.2 }} href="https://www.instagram.com/ujjwalsharma.jsx/" className="text-gray-400 hover:text-green-400 transition-all text-3xl">
             <FaInstagram />
           </motion.a>
         </div>
