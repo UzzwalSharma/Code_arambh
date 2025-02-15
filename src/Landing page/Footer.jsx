@@ -1,6 +1,7 @@
 import React from "react";
 import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // Importing Link from react-router-dom
 
 const Footer = () => {
   return (
@@ -19,10 +20,18 @@ const Footer = () => {
 
         {/* Navigation Links */}
         <ul className="flex flex-wrap justify-center md:justify-start space-x-6 text-gray-300 text-sm">
-          <li className="hover:text-green-400 transition-all cursor-pointer">Home</li>
-          <li className="hover:text-green-400 transition-all cursor-pointer">Features</li>
-          <li className="hover:text-green-400 transition-all cursor-pointer">Pricing</li>
-          <li className="hover:text-green-400 transition-all cursor-pointer">Contact</li>
+          <li className="hover:text-green-400 transition-all cursor-pointer">
+            <Link to="/">Home</Link> {/* Adding React Router Link */}
+          </li>
+          <li className="hover:text-green-400 transition-all cursor-pointer">
+            <Link to="/features">Features</Link>
+          </li>
+          <li className="hover:text-green-400 transition-all cursor-pointer">
+            <Link to="/Pricing">Pricing</Link>
+          </li>
+          <li className="hover:text-green-400 transition-all cursor-pointer">
+            <Link to="/contact">Contact</Link>
+          </li>
         </ul>
 
         {/* Social Media Icons */}
@@ -53,7 +62,6 @@ const Footer = () => {
         Built with ❤️ by <span className="text-green-400 font-black">Ujjwal</span>
       </p>
     </footer>
-
   );
 };
 

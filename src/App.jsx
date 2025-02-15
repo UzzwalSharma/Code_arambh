@@ -12,6 +12,7 @@ import ProtectedRoute from "/Authentication/ProtectedRoute.jsx";
 import { Toaster } from "sonner";
 import AuthNotifier from "/Authentication/AuthNotifier.jsx";
 import Profile from "/src/Dashboard/_Components/Profile.jsx"
+import Pricing from "/src/Landing page/Pricing.jsx"
 import GetInTouch from "./GetInTouch";
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
           }
         />
          <Route path="contact" element={<GetInTouch />} />
+         <Route path="pricing" element={<Pricing />} />
       </Routes>
     </Router>
   );
