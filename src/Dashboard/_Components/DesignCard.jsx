@@ -26,6 +26,10 @@ const DesignCard = ({ design }) => {
         </h4>
         <h2 className="text-gray-300 text-sm">{design.description}</h2>
         <p className="text-gray-400 text-sm mt-2">
+          Created by:{" "}
+          <span className="text-green-400 font-semibold">{design.userName}</span>
+        </p>
+        <p className="text-gray-400 text-sm mt-2">
           Created on: {format(new Date(design.timestamp), "PPP")}
         </p>
       </div>
@@ -36,11 +40,10 @@ const DesignCard = ({ design }) => {
           e.stopPropagation(); // Prevents interference from parent divs
           navigate(`/generated-code/${design._id}`);
         }}
-      className="w-full mt-4 px-5 py-3 text-center text-white font-semibold bg-green-500 rounded-xl hover:bg-green-600 transition-all duration-300 z-10 relative shadow-lg"
+        className="w-full mt-4 px-5 py-3 text-center text-white font-semibold bg-green-500 rounded-xl hover:bg-green-600 transition-all duration-300 z-10 relative shadow-lg"
       >
         View Design
       </button>
-
 
       {/* Glowing Border Effect on Hover */}
       <div className="absolute inset-0 border-2 border-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>

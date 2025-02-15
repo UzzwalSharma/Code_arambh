@@ -7,7 +7,7 @@ import Loader from "/Loader/Loader.jsx";
 import { generateResponse } from "/Ai models/Open_route.jsx";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
-
+import { useUser } from "@clerk/clerk-react"; // Import Clerk's user hook
 
 
 
@@ -26,7 +26,8 @@ function ImageUpload() {
   const [response, setResponse] = useState(""); 
   const [description, setDescription] = useState("");
 const navigate = useNavigate();
-
+const { user } = useUser(); // Get user info from Clerk
+const userName = user ? `${user.firstName} ${user.lastName}` : "Anonymous"; // Use full name or fallback
   const handleImageUpload = async (event) => {
     const file = event.target.files[0];
     if (!file) return;
@@ -69,7 +70,7 @@ const navigate = useNavigate();
     setLoading(true);
   
     try {
-      const aiResponse = await generateResponse(description, image, selectedModel.model_name);
+      const aiResponse = await generateResponse(userName,description, image, selectedModel.model_name);
       console.log("🚀 Full AI Response:", aiResponse);
   
       // ✅ Ensure aiResponse is valid

@@ -1,9 +1,14 @@
 import axios from "axios";
 import PROMPTS from "/Ai models/PROMPTS.jsx"; // Importing the optimized prompt file
 
-export async function generateResponse(userDescription, imageUrl, model) {
+
+export async function generateResponse(userName,userDescription, imageUrl, model) {
   try {
+   
+
+
     console.log("🟢 Received Params:");
+    console.log("User Name:", userName); // Debugging user name
     console.log("User Description:", userDescription);
     console.log("Image URL:", imageUrl);
     console.log("Model:", model);
@@ -14,7 +19,7 @@ export async function generateResponse(userDescription, imageUrl, model) {
     // ✅ Send request in the format the backend expects
     const requestBody = {
       imageUrl: imageUrl,
-      userName: "Test User",
+     userName: userName, // Use actual user's name
       description: userDescription,
       modelName: model,
       prompt: finalPrompt,
