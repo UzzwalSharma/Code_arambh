@@ -2,6 +2,8 @@ import React from "react";
 import { FaTwitter, FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom"; // Importing Link from react-router-dom
+import { Link as ScrollLink } from "react-scroll"; 
+
 
 const Footer = () => {
   return (
@@ -18,21 +20,32 @@ const Footer = () => {
           <p className="text-gray-400 mt-2 text-sm">Sketch. Convert. Deploy.</p>
         </div>
 
+    
+        
         {/* Navigation Links */}
         <ul className="flex flex-wrap justify-center md:justify-start space-x-6 text-gray-300 text-sm">
-          <li className="hover:text-green-400 transition-all cursor-pointer">
-            <Link to="/">Home</Link> {/* Adding React Router Link */}
-          </li>
-          <li className="hover:text-green-400 transition-all cursor-pointer">
-            <Link to="/features">Features</Link>
-          </li>
-          <li className="hover:text-green-400 transition-all cursor-pointer">
-            <Link to="/Pricing">Pricing</Link>
-          </li>
-          <li className="hover:text-green-400 transition-all cursor-pointer">
-            <Link to="/contact">Contact</Link>
-          </li>
-        </ul>
+  <li className="hover:text-green-400 transition-all cursor-pointer">
+    <ScrollLink to="home" smooth={true} duration={500} className="text-lg font-bold hover:text-green-400 cursor-pointer">
+      Home
+    </ScrollLink>
+  </li>
+  <li className="hover:text-green-400 transition-all cursor-pointer">
+    <ScrollLink to="reviews" smooth={true} duration={500} className="text-lg font-bold hover:text-green-400 cursor-pointer">
+      Features
+    </ScrollLink>
+  </li>
+  <li className="hover:text-green-400 transition-all cursor-pointer">
+    <Link to="/Pricing" className="text-lg font-bold hover:text-green-400 cursor-pointer">
+      Pricing
+    </Link>
+  </li>
+  <li className="hover:text-green-400 transition-all cursor-pointer">
+    <Link to="/contact" className="text-lg font-bold hover:text-green-400 cursor-pointer">
+      Contact
+    </Link>
+  </li>
+</ul>
+
 
         {/* Social Media Icons */}
         <div className="flex space-x-8 mt-6 md:mt-0">
@@ -59,7 +72,7 @@ const Footer = () => {
         © {new Date().getFullYear()} Pixora. All rights reserved.
       </p>
       <p className="text-center text-gray-500 text-xs mt-1">
-        Built with ❤️ by <span className="text-green-400 font-black">Ujjwal</span>
+        Built with ❤️ by <span className="text-green-400 font-black">Team Syntax Squad</span>
       </p>
     </footer>
   );
