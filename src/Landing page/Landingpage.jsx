@@ -10,9 +10,10 @@ function Landingpage() {
      <Hero/>
     <ComparisonSection/> 
     <hr />
-  <Timeline/>
+    <HeroSection/>
+
   <hr />
-  <HeroSection/>
+  <Timeline/>
   <Footer/>
     </div>
   )
