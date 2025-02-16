@@ -1,6 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+import TypingEffect from 'react-typing-effect';
+
 
 const IntegrationsCarousel = () => {
   const integrations = [
@@ -16,7 +18,15 @@ const IntegrationsCarousel = () => {
 
   return (
     <section className="integrations-section px-4 py-0.5 ">
-      <h4 className="text-2xl font-bold text-center text-black  text-shadow">Pixora Integrations</h4>
+          <h4 className="text-2xl font-bold text-center text-black text-shadow">
+          <TypingEffect
+            text={['Pixora Integrations']} // Text you want to show
+            speed={100} // Typing speed in ms
+            eraseSpeed={50} // Erasing speed in ms (optional)
+            eraseDelay={1500} // Delay before erasing (optional)
+            typingDelay={500} // Delay before typing starts (optional)
+          />
+        </h4>
       <div className="marquee-wrapper relative overflow-hidden">
         <motion.div
           className="marquee-content flex gap-8"
