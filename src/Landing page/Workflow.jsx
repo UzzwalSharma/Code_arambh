@@ -81,7 +81,7 @@ const HowItWorks = () => {
   ];
 
   const backgroundTexts = [
-   "ujjwal" , "Simran" , "Aditi", "Deploy Instantly", "Fast & Efficient", "AI-Powered", "Seamless Code",
+   "{ ujjwal }" , "<< Simran >>" , "[ Aditi ]", "// Deploy Instantly //", " -- Fast & Efficient --", "#AI-Powered", "??Seamless Code??",
     "Pixora Magic", "Effortless Development", "Design to Code", "Next-Gen UI",
     "Intelligent Conversion", "Super Fast"
   ];
