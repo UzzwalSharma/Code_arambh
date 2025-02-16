@@ -68,95 +68,65 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "react-responsive";
 
-function HowItWorks() {
+const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const [cardPositions, setCardPositions] = useState([]);
   const cardRefs = useRef([]);
-
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const steps = [
-    {
-      title: "Upload Your Design",
-      description: "Start by uploading your design file to Pixora.",
-      side: "left",
-      image: "/upload.jpg", // Add the image for this step
-    },
-    {
-      title: "AI Analyzes the Design",
-      description: "Pixora's AI analyzes your design for conversion.",
-      side: "right",
-      image: "/analysis.jpg", // Add the image for this step
-    },
-    {
-      title: "Code Generation",
-      description: "Pixora generates production-ready code.",
-      side: "left",
-      image: "/code.jpg", // Add the image for this step
-    },
-    {
-      title: "Export and Deploy",
-      description: "Export and deploy the code to your platform.",
-      side: "right",
-      image: "/deploy.jpg", // Add the image for this step
-    },
+    { title: "Upload Your Design", description: "Start by uploading your design file to Pixora.", side: "left", image: "/upload.jpg" },
+    { title: "AI Analyzes the Design", description: "Pixora's AI analyzes your design for conversion.", side: "right", image: "/analysis.jpg" },
+    { title: "Code Generation", description: "Pixora generates production-ready code.", side: "left", image: "/code.jpg" },
+    { title: "Export and Deploy", description: "Export and deploy the code to your platform.", side: "right", image: "/deploy.jpg" },
+  ];
+
+  const backgroundTexts = [
+   "ujjwal" , "Simran" , "Aditi", "Deploy Instantly", "Fast & Efficient", "AI-Powered", "Seamless Code",
+    "Pixora Magic", "Effortless Development", "Design to Code", "Next-Gen UI",
+    "Intelligent Conversion", "Super Fast"
   ];
 
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveStep((prevStep) => (prevStep + 1) % 4);
-    }, 3000);
-
+    }, 6000);
     return () => clearInterval(interval);
   }, []);
 
-  const updateCardPositions = () => {
-    const positions = cardRefs.current.map((card) => card.getBoundingClientRect());
-    setCardPositions(positions);
-  };
-
-  useEffect(() => {
-    updateCardPositions();
-    window.addEventListener("resize", updateCardPositions);
-    return () => window.removeEventListener("resize", updateCardPositions);
-  }, []); 
-  
-
-  const handleRipple = (e) => {
-    const ripple = document.createElement("span");
-    ripple.classList.add("ripple");
-    e.target.appendChild(ripple);
-
-    const size = Math.max(e.target.clientWidth, e.target.clientHeight);
-    const x = e.clientX - e.target.offsetLeft - size / 2;
-    const y = e.clientY - e.target.offsetTop - size / 2;
-
-    ripple.style.width = ripple.style.height = `${size}px`;
-    ripple.style.left = `${x}px`;
-    ripple.style.top = `${y}px`;
-
-    setTimeout(() => {
-      ripple.remove();
-    }, 600); // ripple duration
-  };
-
   return (
-    <div id="workflow">
-      <section className={`px-6 py-16 ${isMobile ? 'block' : 'flex items-center justify-between'} bg-gray-200`}>
+    <div id="workflow" className="relative overflow-hidden">
+      {/* Floating Background Texts */}
+      {backgroundTexts.map((text, index) => (
+        <motion.div
+          key={index}
+          initial={{ opacity: 0, scale: 0.5 }}
+          animate={{ opacity: 0.25, scale: 1.2, y: [10, -10, 10] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute text-[4rem] font-black text-[#00ff99] opacity-10 z-0 select-none"
+          style={{
+            top: `${Math.random() * 100}%`,
+            left: `${Math.random() * 100}%`,
+            transform: "translate(-50%, -50%)",
+            animation: `fadeInOut ${5 + Math.random() * 5}s infinite ease-in-out alternate`,
+          }}
+        >
+          {text}
+        </motion.div>
+      ))}
+
+      <section className={`px-6 py-16 ${isMobile ? 'block' : 'flex items-center justify-between'} relative`}>
         <div className={`w-full ${isMobile ? '' : 'w-1/2 space-y-8'}`}>
           <motion.h2
-            className={`text-2xl font-black mb-8 ${isMobile ? 'text-center' : ''}`}
+            className="text-4xl font-extrabold mb-8 text-center text-[#202121]"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, type: "spring", stiffness: 100 }}
           >
-            <h2 className="text-4xl font-extrabold mb-8">
-              How <span className="text-green-500">Pixora</span> works?
-            </h2>
+            How <span className="text-green-400">Pixora</span> Works?
           </motion.h2>
 
           <motion.p
-            className={`text-lg text-gray-600 mb-12 ${isMobile ? 'text-center' : ''}`}
+            className="text-lg text-gray-700 mb-12 text-center"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.2, type: "spring", stiffness: 100 }}
@@ -174,34 +144,34 @@ function HowItWorks() {
                 transition={{ duration: 0.6, ease: "easeInOut" }}
                 className={`relative flex items-center w-full my-10 ${step.side === "left" ? "justify-start" : "justify-end"}`}
               >
-                {/* Glowing line between the cards */}
+                {/* Glowing Line */}
                 {index < steps.length - 1 && (
-                  <div
+                  <motion.div
                     className="absolute left-1/2 top-[50%] w-[2px] bg-[#00ff99] h-full z-0"
-                    style={{
-                      boxShadow: '0 0 10px rgba(0, 255, 153, 0.8), 0 0 20px rgba(0, 255, 153, 1)',
-                      animation: 'glow 1.5s infinite alternate',
+                    animate={{
+                      opacity: [0.6, 1, 0.6],
+                      boxShadow: [
+                        "0 0 10px rgba(0, 255, 153, 0.6), 0 0 20px rgba(0, 255, 153, 0.8)",
+                        "0 0 15px rgba(0, 255, 153, 1), 0 0 30px rgba(0, 255, 153, 1.2)",
+                        "0 0 10px rgba(0, 255, 153, 0.6), 0 0 20px rgba(0, 255, 153, 0.8)"
+                      ],
                     }}
-                  ></div>
+                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                    style={{
+                      filter: "drop-shadow(0px 0px 10px #00ff99) brightness(1.3)",
+                    }}
+                  ></motion.div>
                 )}
 
+                {/* Glowing Step Indicator */}
                 <motion.div
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    boxShadow: [
-                      "0px 0px 15px rgba(0,255,153,0.8)",
-                      "0px 0px 25px rgba(0,255,153,1)",
-                      "0px 0px 15px rgba(0,255,153,0.8)",
-                    ],
-                  }}
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
                   transition={{ duration: 1.5, repeat: Infinity }}
-                  className="absolute left-1/2 w-5 h-5 bg-[#00ff99] rounded-full shadow-[0_0_15px_rgba(0,255,153,1)] transform -translate-x-1/2"
+                  className="absolute left-1/2 w-6 h-6 bg-[#00ff99] rounded-full shadow-[0_0_20px_rgba(0,255,153,1)] transform -translate-x-1/2"
                 ></motion.div>
 
-                <div
-                  onMouseDown={handleRipple}
-                  className="relative w-[30%] p-6 rounded-2xl border border-[#00ff99] bg-gray-800 bg-opacity-60 backdrop-blur-md shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl overflow-hidden"
-                >
+                {/* Step Card */}
+                <div className="relative w-[30%] p-6 rounded-2xl border border-[#00ff99] bg-gray-800 bg-opacity-60 backdrop-blur-md shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl overflow-hidden">
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -226,9 +196,11 @@ function HowItWorks() {
       </section>
     </div>
   );
-}
+};
 
 export default HowItWorks;
+
+
 
 
 

@@ -3,17 +3,22 @@ import Hero from './Hero'
 import ComparisonSection from './Comparisonsec.jsx'
 import Timeline from './Workflow'
 import HeroSection from './Herosec2'
+import IntegrationsCarousel from './IntegrationsCarousel'
 import Footer from './Footer'
 function Landingpage() {
   return (
     <div>
      <Hero/>
     <ComparisonSection/> 
-    <hr />
-    <HeroSection/>
+   
+    <hr className='text-gray-400' />
+    <IntegrationsCarousel/>
+    <hr  className='text-gray-400'/>
+    <Timeline/>
 
   <hr />
-  <Timeline/>
+  <HeroSection/>
+
   <Footer/>
     </div>
   )
