@@ -45,7 +45,7 @@ const IntegrationsCarousel = () => {
                 <img
                   src={integration.image}
                   alt={integration.alt}
-                  className="h-28 w-28 object-contain"
+                  className="h-40 w-40 object-contain"
                 />
               </li>
             ))}
@@ -58,7 +58,7 @@ const IntegrationsCarousel = () => {
                 <img
                   src={integration.image}
                   alt={integration.alt}
-                  className="h-28 w-28 object-contain"
+                  className="h-40 w-40 object-contain"
                 />
               </li>
             ))}

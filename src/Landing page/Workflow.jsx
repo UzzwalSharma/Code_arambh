@@ -135,62 +135,40 @@ const HowItWorks = () => {
           </motion.p>
 
           <div className="relative overflow-x-hidden">
-            {steps.map((step, index) => (
-              <motion.div
-                key={index}
-                ref={(el) => (cardRefs.current[index] = el)}
-                initial={{ opacity: 0, x: step.side === "left" ? -100 : 100 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.6, ease: "easeInOut" }}
-                className={`relative flex items-center w-full my-10 ${step.side === "left" ? "justify-start" : "justify-end"}`}
-              >
-                {/* Glowing Line */}
-                {index < steps.length - 1 && (
-                  <motion.div
-                    className="absolute left-1/2 top-[50%] w-[2px] bg-[#00ff99] h-full z-0"
-                    animate={{
-                      opacity: [0.6, 1, 0.6],
-                      boxShadow: [
-                        "0 0 10px rgba(0, 255, 153, 0.6), 0 0 20px rgba(0, 255, 153, 0.8)",
-                        "0 0 15px rgba(0, 255, 153, 1), 0 0 30px rgba(0, 255, 153, 1.2)",
-                        "0 0 10px rgba(0, 255, 153, 0.6), 0 0 20px rgba(0, 255, 153, 0.8)"
-                      ],
-                    }}
-                    transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                    style={{
-                      filter: "drop-shadow(0px 0px 10px #00ff99) brightness(1.3)",
-                    }}
-                  ></motion.div>
-                )}
+             {/* Vertical Glowing Progress Line */}
+             <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#00ff99] to-transparent opacity-50"></div>
 
-                {/* Glowing Step Indicator */}
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
-                  transition={{ duration: 1.5, repeat: Infinity }}
-                  className="absolute left-1/2 w-6 h-6 bg-[#00ff99] rounded-full shadow-[0_0_20px_rgba(0,255,153,1)] transform -translate-x-1/2"
-                ></motion.div>
+{steps.map((step, index) => (
+  <motion.div
+    key={index}
+    initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    transition={{ duration: 0.6, ease: "easeInOut" }}
+    className={`relative flex items-center w-full my-10 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
+  >
+    {/* Glowing Numbered Step Indicator */}
+    <motion.div
+      animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+      transition={{ duration: 1.5, repeat: Infinity }}
+      className="absolute left-1/2 w-12 h-12 flex items-center justify-center text-xl font-bold text-black bg-[#00ff99] rounded-full shadow-[0_0_20px_rgba(0,255,153,1)] transform -translate-x-1/2 border-2 border-white"
+    >
+      {index + 1}
+    </motion.div>
 
-                {/* Step Card */}
-                <div className="relative w-[30%] p-6 rounded-2xl border border-[#00ff99] bg-gray-800 bg-opacity-60 backdrop-blur-md shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl overflow-hidden">
-                  <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.1 }}
-                    className="absolute inset-0 bg-gradient-to-r opacity-30"
-                  ></motion.div>
-
-                  <h3 className="relative text-xl font-extrabold text-[#00ff99] drop-shadow-lg tracking-wide z-10">
-                    {step.title}
-                  </h3>
-                  <p className="relative mt-3 text-lg text-gray-200 leading-relaxed tracking-wide z-10">
-                    {step.description}
-                  </p>
-                  <div className="mt-4">
-                    <img src={step.image} alt={step.title} className="w-full h-auto rounded-lg shadow-md" />
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+    {/* Step Card */}
+    <div className="relative w-[35%] p-6 rounded-2xl border border-[#00ff99] bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+      <h3 className="relative text-xl font-extrabold text-[#00ff99] tracking-wide z-10">
+        {step.title}
+      </h3>
+      <p className="relative mt-3 text-lg text-gray-300 leading-relaxed tracking-wide z-10">
+        {step.description}
+      </p>
+      <div className="mt-4">
+        <img src={step.image} alt={step.title} className="w-full h-auto rounded-lg shadow-md" />
+      </div>
+    </div>
+  </motion.div>
+))}
           </div>
         </div>
       </section>
