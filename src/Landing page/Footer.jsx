@@ -71,9 +71,18 @@ const Footer = () => {
       <p className="text-center text-gray-500 text-xs mt-6">
         © {new Date().getFullYear()} Pixora. All rights reserved.
       </p>
-      <p className="text-center text-gray-500 text-xs mt-1">
-        Built with ❤️ by <span className="text-green-400 font-black">Team Syntax Squad</span>
-      </p>
+      <footer className="text-yellow py-6 mt-auto">
+  <div className="flex flex-col justify-center items-center space-y-1">
+    <p className="text-sm md:text-base text-center font-bold">
+      Built with ❤️, determination, and a lot of CTRL + Z by
+      <span className="font-extrabold text-green-400"> Team Syntax Squad</span>
+    </p>
+    <p className="text-bold text-white text-center">
+      If it works, it's magic. If it doesn't, blame Bhupendra Jogi!
+    </p>
+  </div>
+</footer>
+
     </footer>
   );
 };

@@ -29,9 +29,9 @@ function Viewcode() {
   }, [id]);
 
   return (
-    <div>
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <div className="grid grid-cols-1 md:grid-cols-5 p-5 h-screen gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-5 p-5 flex-grow gap-8">
         {/* User Section - Takes 1 column (20%) */}
         <div className="md:col-span-1">
           <UserSection />
@@ -42,10 +42,23 @@ function Viewcode() {
           <CodeEditor code={code} />
         </div>
       </div>
-      
+
+      {/* Shoutout Section */}
+{/* Shoutout Section */}
+<footer className=" text-black py-6 mt-auto">
+  <div className="flex flex-col justify-center items-center space-y-2">
+    <p className="text-sm md:text-base text-center font-bold transition-transform duration-300 hover:scale-105">
+      Crafted with <span role="img" aria-label="heart" className="inline-block animate-pulse">❤️</span> &amp; a sprinkle of magic by
+      <span className="font-extrabold text-green-400">Team Syntax Squad</span>
+    </p>
+    <p className="text-center font-bold text-gray-700 transition-colors duration-300 hover:text-gray-900">
+      Ham hi wo jinki wajah se Designers ki job jaegi! (Bas, mazaak kar rahe hain 😜)
+    </p>
+  </div>
+</footer>
+
     </div>
   );
-  
 }
 
 export default Viewcode;
