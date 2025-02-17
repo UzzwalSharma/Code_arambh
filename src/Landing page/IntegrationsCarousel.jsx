@@ -14,19 +14,24 @@ const IntegrationsCarousel = () => {
     { image: "/css.png", alt: "CSS" },
     { image: "/tailwind.png", alt: "Tailwind" },
     { image: "/gitlab.png", alt: "GitLab" },
+    { image: "/bootstrap.png", alt: "BootStrap" },
+ 
   ];
 
   return (
     <section className="integrations-section px-4 py-0.5 ">
-          <h4 className="text-2xl font-bold text-center text-black text-shadow">
-          <TypingEffect
-            text={['Pixora Integrations']} // Text you want to show
-            speed={100} // Typing speed in ms
-            eraseSpeed={50} // Erasing speed in ms (optional)
-            eraseDelay={1500} // Delay before erasing (optional)
-            typingDelay={500} // Delay before typing starts (optional)
-          />
-        </h4>
+      <h4 className="text-2xl font-bold text-center text-black text-shadow flex items-center justify-center space-x-2">
+  <TypingEffect
+    text={['Pixora Integrations']} // Text you want to show
+    speed={100} // Typing speed in ms
+    eraseSpeed={50} // Erasing speed in ms (optional)
+    eraseDelay={1500} // Delay before erasing (optional)
+    typingDelay={500} // Delay before typing starts (optional)
+  />
+  <img src="/edit_15568281.gif" alt="Editing Icon" className="w-12 h-12" />
+</h4>
+
+      
       <div className="marquee-wrapper relative overflow-hidden">
         <motion.div
           className="marquee-content flex gap-8"
