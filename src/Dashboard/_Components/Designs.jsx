@@ -25,9 +25,12 @@ const Designs = () => {
   return (
     <div className="p-6 max-w-6xl mx-auto">
       <Loader loading={loading} message="Fetching Designs..." /> {/* Loader Component */}
-      <h2 className="text-3xl font-bold text-green-400 text-center mb-8">
-        Wireframes and Codes By the Community
-      </h2>
+      <h2 className="text-4xl font-extrabold bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent mb-10 px-8 py-3 border-2 border-green-600 rounded-xl shadow-lg hover:bg-gradient-to-r hover:from-green-500 hover:to-green-600 hover:scale-105 transition-all duration-300 ease-in-out text-center tracking-wide">
+  Wireframes and Codes by the Community
+</h2>
+
+
+
       {!loading && designs.length === 0 && (
         <p className="text-center text-gray-400">No designs found.</p>
       )}

@@ -42,6 +42,7 @@ function Viewcode() {
           <CodeEditor code={code} />
         </div>
       </div>
+      
     </div>
   );
   

@@ -12,7 +12,7 @@ import { useUser } from "@clerk/clerk-react"; // Import Clerk's user hook
 
 
 const aiModels = [
-  { name: "Gemini", img: "/Google_Bard_logo.svg - Copy.png", model_name: "google/gemini-2.0-pro-exp-02-05:free" },
+  { name: "Gemini [Recommended]", img: "/Google_Bard_logo.svg - Copy.png", model_name: "google/gemini-2.0-pro-exp-02-05:free" },
   { name: "Deepseek", img: "/deepseek.png", model_name: "google/gemini-exp-1206:free" },
   { name: "Meta LLM", img: "/meta.png", model_name: "google/gemini-2.0-flash-thinking-exp:free" },
   { name: "Gemini 2.0 PRO", img: "/Pro gemini.jpg", model_name: "google/gemini-2.0-flash-thinking-exp-1219:free" },
