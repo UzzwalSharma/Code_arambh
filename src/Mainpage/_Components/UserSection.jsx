@@ -49,7 +49,7 @@ const UserSection = () => {
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.6 }}
       >
-        Welcome, {firstName}!
+        Created by, {firstName}!
       </motion.h2>
 
       {/* Wireframe Section */}
