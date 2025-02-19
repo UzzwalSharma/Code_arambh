@@ -19,7 +19,10 @@ const DesignCard = ({ design }) => {
       {/* Text Content */}
       <div className="mt-4 text-center">
         {/* User Description */}
-        <h2 className="text-gray-300 text-sm mb-2">{design.description}</h2>
+        <h2 className="text-gray-300 text-sm mb-2 break-words overflow-hidden">
+  {design.description}
+</h2>
+
 
         {/* Model Name */}
         <h4 className="text-lg font-semibold text-white">
