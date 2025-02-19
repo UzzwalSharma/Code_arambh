@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Landingpage from "./Landing page/Landingpage";
+import Landingpage from "./Mainpage/Landing page/Landingpage";
 import Dashboard from "/src/Dashboard/Layout.jsx";
 import Workspace from "./Dashboard/_Components/Workspace";
 import Designs from "./Dashboard/_Components/Designs";
