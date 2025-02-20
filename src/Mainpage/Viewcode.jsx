@@ -172,63 +172,83 @@ function Viewcode() {
     </div>
   
     {/* User Panel (80vw, Horizontal) with GitHub Details */}
-    <div className="w-[80vw] bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-gray-600">
-      {user ? (
-        <>
-          {/* GitHub User Info */}
-          <div className="flex items-center gap-4">
-            <img
-              src={user.avatar_url}
-              alt="GitHub Avatar"
-              className="w-16 h-16 rounded-full border-2 border-gray-300"
-            />
-            <div>
-              <h3 className="text-lg font-bold">{user.name || user.login}</h3>
-              <p className="text-gray-600">{user.bio || "No bio available"}</p>
-              <div className="text-sm text-gray-500">
-                <p>👥 Followers: {user.followers} | Following: {user.following}</p>
-                <p>📂 Public Repos: {user.public_repos}</p>
-              </div>
-            </div>
+    <div className="w-[80vw] bg-white rounded-lg  p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-2 border-green-400 shadow-[0_0_15px_#00ff00]">
+  {user ? (
+    <>
+      {/* GitHub User Info */}
+      <div className="flex items-center gap-4">
+        <img
+          src={user.avatar_url}
+          alt="GitHub Avatar"
+          className="w-16 h-16 rounded-full border-2 border-gray-300"
+        />
+        <div>
+          <h3 className="text-lg font-bold">{user.name || user.login}</h3>
+          <p className="text-gray-600">{user.bio || "No bio available"}</p>
+          <div className="text-sm text-gray-500">
+            <p>👥 Followers: {user.followers} | Following: {user.following}</p>
+            <p>📂 Public Repos: {user.public_repos}</p>
           </div>
-  
-          {/* Action Buttons */}
-          <div className="flex flex-wrap justify-center md:justify-end gap-4 mt-4 md:mt-0">
-            <button
-              onClick={() => setShowPopup(true)}
-              className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center space-x-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17l5 5m0 0l-5 5m5-5H10a2 2 0 01-2-2V4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2h-2z"/>
-              </svg>
-              <span>Start Expert Call</span>
-            </button>
-  
-            <button
-              onClick={handlePushToGitHub}
-              className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center space-x-2"
-            >
-              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m-8-8h16" />
-              </svg>
-              <span>Push to GitHub</span>
-            </button>
-          </div>
-        </>
-      ) : (
-        <div className="text-center">
-          <p className="text-gray-600">Please connect your GitHub account to see user details.</p>
         </div>
-      )}
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex flex-wrap justify-center md:justify-end gap-4 mt-4 md:mt-0">
+        <button
+          onClick={() => setShowPopup(true)}
+          className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center space-x-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17l5 5m0 0l-5 5m5-5H10a2 2 0 01-2-2V4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2h-2z"/>
+          </svg>
+          <span>Start Expert Call</span>
+        </button>
+
+        <button
+          onClick={handlePushToGitHub}
+          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center space-x-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m-8-8h16" />
+          </svg>
+          <span>Push to GitHub</span>
+        </button>
+      </div>
+    </>
+  ) : (
+    <div className="text-center">
+      <p className="text-gray-600">Please connect your GitHub account to see user details.</p>
     </div>
+  )}
+</div>
+
   
     {/* Render Subscription Popup */}
     {showPopup && (
-      <SubscriptionPopup
-        onClose={() => setShowPopup(false)}
-        onVerify={handleVerify}
-      />
-    )}
+  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-gray-900 text-white p-6 rounded-lg border-2 border-cyan-400 shadow-[0_0_15px_#00ffff] w-[400px]">
+      <h2 className="text-xl font-bold text-center">Subscribe for Premium</h2>
+      <p className="text-center text-gray-300 mt-2">Get access to exclusive features by subscribing.</p>
+
+      {/* Subscription Buttons */}
+      <div className="flex justify-center gap-4 mt-4">
+        <button
+          onClick={handleVerify}
+          className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
+        >
+          Subscribe Now
+        </button>
+        <button
+          onClick={() => setShowPopup(false)}
+          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
   
     <footer className="text-black py-6 mt-auto">
       <div className="flex flex-col justify-center items-center space-y-2">
