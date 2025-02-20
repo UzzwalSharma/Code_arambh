@@ -172,7 +172,7 @@ function Viewcode() {
     </div>
   
     {/* User Panel (80vw, Horizontal) with GitHub Details */}
-    <div className="w-[80vw] bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6">
+    <div className="w-[80vw] bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-gray-600">
       {user ? (
         <>
           {/* GitHub User Info */}
