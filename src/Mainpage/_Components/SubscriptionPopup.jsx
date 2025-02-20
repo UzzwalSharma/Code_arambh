@@ -40,7 +40,7 @@ const SubscriptionPopup = ({ onClose, onVerify }) => {
 
         {/* Right Side: Code Input */}
         <div className="w-1/2 p-10 flex flex-col items-center justify-center space-y-6 rounded-r-lg bg-gradient-to-r from-gray-800 via-gray-900 to-gray-800">
-          <h2 className="text-3xl font-semibold text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 tracking-wide">
+          <h2 className="text-3xl font-black text-center text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-blue-500 tracking-wide">
             Premium Access Required
           </h2>
           <p className="text-lg text-gray-300 text-center leading-relaxed max-w-md">
