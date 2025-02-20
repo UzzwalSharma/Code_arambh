@@ -173,6 +173,15 @@ function Viewcode() {
   
     {/* User Panel (80vw, Horizontal) with GitHub Details */}
     <div className="w-[80vw] bg-white rounded-lg  p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-2 border-green-400 shadow-[0_0_15px_#00ff00]">
+    <button
+          onClick={() => setShowPopup(true)}
+          className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center space-x-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17l5 5m0 0l-5 5m5-5H10a2 2 0 01-2-2V4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2h-2z"/>
+          </svg>
+          <span>Start Expert Call</span>
+        </button>
   {user ? (
     <>
       {/* GitHub User Info */}
@@ -194,15 +203,7 @@ function Viewcode() {
 
       {/* Action Buttons */}
       <div className="flex flex-wrap justify-center md:justify-end gap-4 mt-4 md:mt-0">
-        <button
-          onClick={() => setShowPopup(true)}
-          className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center space-x-2"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17l5 5m0 0l-5 5m5-5H10a2 2 0 01-2-2V4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2h-2z"/>
-          </svg>
-          <span>Start Expert Call</span>
-        </button>
+     
 
         <button
           onClick={handlePushToGitHub}

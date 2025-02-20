@@ -24,11 +24,11 @@ const SubscriptionPopup = ({ onClose, onVerify }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-opacity-40 backdrop-blur-lg border-cyan-400 shadow-[0_0_15px_#00ffff] w-[400px]"
+      className="fixed inset-0 flex items-center justify-center bg-opacity-40 backdrop-blur-lg"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
-      <div className="w-full max-w-3xl bg-transparent text-white rounded-lg shadow-lg overflow-hidden flex">
+      <div className="w-full max-w-3xl bg-transparent text-white rounded-lg shadow-lg overflow-hidden flex border-black">
         {/* Left Side: Image */}
         <div className="w-1/2 flex justify-center items-center">
           <img
