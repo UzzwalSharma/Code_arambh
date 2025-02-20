@@ -225,30 +225,11 @@ function Viewcode() {
   
     {/* Render Subscription Popup */}
     {showPopup && (
-  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-    <div className="bg-gray-900 text-white p-6 rounded-lg border-2 border-cyan-400 shadow-[0_0_15px_#00ffff] w-[400px]">
-      <h2 className="text-xl font-bold text-center">Subscribe for Premium</h2>
-      <p className="text-center text-gray-300 mt-2">Get access to exclusive features by subscribing.</p>
-
-      {/* Subscription Buttons */}
-      <div className="flex justify-center gap-4 mt-4">
-        <button
-          onClick={handleVerify}
-          className="px-4 py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 transition duration-300"
-        >
-          Subscribe Now
-        </button>
-        <button
-          onClick={() => setShowPopup(false)}
-          className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition duration-300"
-        >
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+      <SubscriptionPopup
+        onClose={() => setShowPopup(false)}
+        onVerify={handleVerify}
+      />
+    )}
   
     <footer className="text-black py-6 mt-auto">
       <div className="flex flex-col justify-center items-center space-y-2">

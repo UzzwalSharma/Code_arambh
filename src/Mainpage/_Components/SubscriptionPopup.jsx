@@ -24,7 +24,7 @@ const SubscriptionPopup = ({ onClose, onVerify }) => {
 
   return (
     <motion.div
-      className="fixed inset-0 flex items-center justify-center bg-opacity-40 backdrop-blur-lg"
+      className="fixed inset-0 flex items-center justify-center bg-opacity-40 backdrop-blur-lg border-cyan-400 shadow-[0_0_15px_#00ffff] w-[400px]"
       whileHover={{ scale: 1.05 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
     >
