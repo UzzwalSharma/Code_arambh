@@ -4,6 +4,8 @@ import ComparisonSection from './Comparisonsec.jsx'
 import Timeline from './Workflow'
 import HeroSection from './Herosec2'
 import IntegrationsCarousel from './IntegrationsCarousel'
+import FAQs from './FAQs'
+import WarningBanner from './WarningBanner'
 import Footer from './Footer'
 function Landingpage() {
   return (
@@ -16,9 +18,13 @@ function Landingpage() {
     <hr  className='text-gray-400'/>
     <Timeline/>
 
-  <hr />
-  <HeroSection/>
 
+  <WarningBanner/>
+ 
+  <HeroSection/>
+  <hr className='text-green-400'/>
+  <FAQs/>
+  <hr className='text-green-400'/>
   <Footer/>
     </div>
   )

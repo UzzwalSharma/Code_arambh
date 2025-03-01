@@ -98,7 +98,7 @@ const UserSection = () => {
       ></textarea>
 
       {/* Created At Section */}
-      <motion.h3
+      {/* <motion.h3
         className="text-lg font-medium text-green-400 mt-6 text-center"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -108,7 +108,7 @@ const UserSection = () => {
       </motion.h3>
       <p className="text-gray-400 italic text-center mt-2 text-sm">
         {new Date(data.timestamp).toLocaleString()}
-      </p>
+      </p> */}
     </motion.div>
   );
 };
