@@ -40,9 +40,9 @@ const DesignCard = ({ design }) => {
               {design.userName}
             </span>
           </p>
-          {/* <p className="text-gray-400 text-sm mt-2">
+          <p className="text-gray-400 text-sm mt-2">
             Created on: {format(new Date(design.timestamp), "PPP")}
-          </p> */}
+          </p>
         </div>
       </div>
 
