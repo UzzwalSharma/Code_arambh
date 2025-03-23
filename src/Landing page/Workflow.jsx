@@ -64,9 +64,10 @@
 
 // export default Timeline;
 
-import React, { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { useMediaQuery } from "react-responsive";
+import React, { useState, useEffect, useRef } from "react"; 
+import { motion } from "framer-motion"; 
+import { useMediaQuery } from "react-responsive"; 
+import AnimatedTitle from "./AnimatedTitle";
 
 const HowItWorks = () => {
   const [activeStep, setActiveStep] = useState(0);
@@ -74,10 +75,10 @@ const HowItWorks = () => {
   const isMobile = useMediaQuery({ maxWidth: 768 });
 
   const steps = [
-    { title: "Upload Your Design", description: "Start by uploading your design file to Pixora.", side: "left", image: "/upload.jpg" },
-    { title: "AI Analyzes the Design", description: "Pixora's AI analyzes your design for conversion.", side: "right", image: "/analysis.jpg" },
-    { title: "Code Generation", description: "Pixora generates production-ready code.", side: "left", image: "/code.jpg" },
-    { title: "Export and Deploy", description: "Export and deploy the code to your platform.", side: "right", image: "/deploy.jpg" },
+    { title: "Upload Your Design", description: "Start by uploading your design file to Pixora.", side: "left", image: "/upload.png" },
+    { title: "AI Analyzes the Design", description: "Pixora's AI analyzes your design for conversion.", side: "right", image: "/Gemini_Generated_Image_p550vup550vup550.jpeg" },
+    { title: "Code Generation", description: "Pixora generates production-ready code.", side: "left", image: "/Gemini_Generated_Image_6e6mqs6e6mqs6e6m.jpeg" },
+    { title: "Export and Deploy", description: "Export and deploy the code to your platform.", side: "right", image: "/Gemini_Generated_Image_p8terxp8terxp8te.jpeg" },
   ];
 
   const backgroundTexts = [
@@ -116,14 +117,11 @@ const HowItWorks = () => {
 
       <section className={`px-6 py-16 ${isMobile ? 'block' : 'flex items-center justify-between'} relative`}>
         <div className={`w-full ${isMobile ? '' : 'w-1/2 space-y-8'}`}>
-          <motion.h2
-            className="text-4xl font-extrabold mb-8 text-center text-[#202121]"
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, type: "spring", stiffness: 100 }}
-          >
-            How <span className="text-green-400">Pixora</span> Works?
-          </motion.h2>
+          {/* Use AnimatedTitle here */}
+          <AnimatedTitle 
+            title="How Pixora Works? <br />" 
+            containerClass="mb-8 text-center"
+          />
 
           <motion.p
             className="text-lg text-gray-700 mb-12 text-center"
@@ -138,37 +136,37 @@ const HowItWorks = () => {
              {/* Vertical Glowing Progress Line */}
              <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-full bg-gradient-to-b from-[#00ff99] to-transparent opacity-50"></div>
 
-{steps.map((step, index) => (
-  <motion.div
-    key={index}
-    initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    transition={{ duration: 0.6, ease: "easeInOut" }}
-    className={`relative flex items-center w-full my-10 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
-  >
-    {/* Glowing Numbered Step Indicator */}
-    <motion.div
-      animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
-      transition={{ duration: 1.5, repeat: Infinity }}
-      className="absolute left-1/2 w-12 h-12 flex items-center justify-center text-xl font-bold text-black bg-[#00ff99] rounded-full shadow-[0_0_20px_rgba(0,255,153,1)] transform -translate-x-1/2 border-2 border-white"
-    >
-      {index + 1}
-    </motion.div>
+            {steps.map((step, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, ease: "easeInOut" }}
+                className={`relative flex items-center w-full my-10 ${index % 2 === 0 ? "justify-start" : "justify-end"}`}
+              >
+                {/* Glowing Numbered Step Indicator */}
+                <motion.div
+                  animate={{ scale: [1, 1.2, 1], opacity: [0.7, 1, 0.7] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
+                  className="absolute left-1/2 w-12 h-12 flex items-center justify-center text-xl font-bold text-black bg-[#00ff99] rounded-full shadow-[0_0_20px_rgba(0,255,153,1)] transform -translate-x-1/2 border-2 border-white"
+                >
+                  {index + 1}
+                </motion.div>
 
-    {/* Step Card */}
-    <div className="relative w-[35%] p-6 rounded-2xl border border-[#00ff99] bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl overflow-hidden">
-      <h3 className="relative text-xl font-extrabold text-[#00ff99] tracking-wide z-10">
-        {step.title}
-      </h3>
-      <p className="relative mt-3 text-lg text-gray-300 leading-relaxed tracking-wide z-10">
-        {step.description}
-      </p>
-      <div className="mt-4">
-        <img src={step.image} alt={step.title} className="w-full h-auto rounded-lg shadow-md" />
-      </div>
-    </div>
-  </motion.div>
-))}
+                {/* Step Card */}
+                <div className="relative w-[35%] p-6 rounded-2xl border border-[#00ff99] bg-gray-800 bg-opacity-50 backdrop-blur-md shadow-xl transition-all transform hover:scale-105 hover:shadow-2xl overflow-hidden">
+                  <h3 className="relative text-xl font-extrabold text-[#00ff99] tracking-wide z-10">
+                    {step.title}
+                  </h3>
+                  <p className="relative mt-3 text-lg text-gray-300 leading-relaxed tracking-wide z-10">
+                    {step.description}
+                  </p>
+                  <div className="mt-4">
+                    <img src={step.image} alt={step.title} className="w-full h-auto rounded-lg shadow-md" />
+                  </div>
+                </div>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

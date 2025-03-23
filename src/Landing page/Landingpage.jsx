@@ -7,6 +7,8 @@ import IntegrationsCarousel from './IntegrationsCarousel'
 import FAQs from './FAQs'
 import WarningBanner from './WarningBanner'
 import Footer from './Footer'
+// import AnimatedTitle from './AnimatedTitle'
+import Newhero from "./Newhero.jsx"
 function Landingpage() {
   return (
     <div>
@@ -16,6 +18,12 @@ function Landingpage() {
     <hr className='text-gray-400' />
     <IntegrationsCarousel/>
     <hr  className='text-gray-400'/>
+
+    {/* <AnimatedTitle
+  title="How <b>Pixora</b> Works <br /> Convert sketches into <b>code</b> instantly"
+  containerClass="mt-5 text-black text-center text-3xl font-bold"
+/> */}
+<Newhero/>
     <Timeline/>
 
 

@@ -72,3 +72,62 @@
 }
 
 
+/* Glow effect for hover interaction */
+.logo-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow for logos */
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  border: 4px solid transparent;
+}
+
+/* Pixora green border on hover with glowing effect */
+.logo-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+  border-color: #00FF00; /* Pixora Green */
+  animation: glowBorder 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glowBorder {
+  0% {
+    border-color: #00FF00; /* Pixora Green */
+    box-shadow: 0 0 5px #00FF00, 0 0 10px #00FF00, 0 0 20px #00FF00;
+  }
+  100% {
+    border-color: #00FF00; /* Pixora Green */
+    box-shadow: 0 0 15px #00FF00, 0 0 25px #00FF00, 0 0 35px #00FF00;
+  }
+}
+
+/* Marquee styling */
+.marquee-wrapper {
+  height: 120px;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee-wrapper > div {
+  display: flex;
+  gap: 8px;
+}
+
+.marquee-wrapper .about-partners_logos_list {
+  display: flex;
+  gap: 8px;
+  white-space: nowrap;
+  animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}

@@ -8,6 +8,9 @@ const UserSection = () => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
+  const [newDescription, setNewDescription] = useState("");
+  const [isRegenerating, setIsRegenerating] = useState(false);
 
   useEffect(() => {
     console.log("Fetching generated data for ID:", id);
@@ -16,6 +19,7 @@ const UserSection = () => {
       .then((response) => {
         console.log("✅ API Response:", response.data);
         setData(response.data);
+        setNewDescription(response.data.description || "");
         setLoading(false);
       })
       .catch((error) => {
@@ -24,6 +28,24 @@ const UserSection = () => {
         setLoading(false);
       });
   }, [id]);
+
+  const handleRegenerate = async () => {
+    if (!newDescription.trim()) return alert("Description cannot be empty!");
+
+    setIsRegenerating(true);
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/regenerate-code/${id}`,
+        { description: newDescription }
+      );
+      setData(response.data); // Update with the new generated data
+      alert("Code successfully regenerated! 🎉");
+    } catch (error) { 
+      console.error("❌ Error regenerating code:", error);
+      alert("Failed to regenerate code. Try again.");
+    }
+    setIsRegenerating(false);
+  };
 
   if (loading)
     return <p className="text-center text-gray-400 animate-pulse">Loading...</p>;
@@ -44,6 +66,7 @@ const UserSection = () => {
     >
       {/* Username Section */}
       <motion.h2
+      
         className="text-2xl font-semibold text-green-400 mb-6 text-center"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -84,21 +107,65 @@ const UserSection = () => {
 
       {/* Description Section */}
       <motion.h3
-        className="text-xl font-medium text-green-400 mt-6 text-center"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6 }}
+  className="text-xl font-medium text-green-400 mt-6 text-center"
+  initial={{ y: -20, opacity: 0 }}
+  animate={{ y: 0, opacity: 1 }}
+  transition={{ delay: 0.8, duration: 0.6 }}
+>
+  Description
+</motion.h3>
+
+<div className="flex flex-col items-center">
+  {isEditing ? (
+    <textarea
+      className="w-full bg-black/50 text-white p-4 border-2 border-green-600 rounded-lg shadow-sm resize-none h-32 overflow-auto"
+      value={newDescription}
+      onChange={(e) => setNewDescription(e.target.value)}
+      rows={4}
+    ></textarea>
+  ) : (
+    <div className="w-full bg-gray-900 text-gray-300 p-4 border border-green-600 rounded-lg text-center max-h-32 overflow-auto">
+      {data.description || "No description provided"}
+    </div>
+  )}
+
+  {/* Buttons */}
+  <div className="flex space-x-3 mt-4">
+    {isEditing ? (
+      <button
+        onClick={() => setIsEditing(false)}
+        className="px-4 py-2 bg-gray-700 text-white rounded-lg hover:bg-gray-600"
       >
-        Description
-      </motion.h3>
-      <textarea
-        className="w-full bg-black/50 text-white p-4 border-2 border-green-600 rounded-lg shadow-sm mt-4 resize-none text-base"
-        readOnly
-        value={data.description || "No description provided"}
-      ></textarea>
+        Cancel
+      </button>
+    ) : (
+      <button
+        onClick={() => setIsEditing(true)}
+        className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-500"
+      >
+        Edit Description
+      </button>
+    )}
+
+    {isEditing && (
+      <button
+        onClick={handleRegenerate}
+        className={`px-4 py-2 rounded-lg ${
+          isRegenerating
+            ? "bg-gray-600 text-gray-300 cursor-not-allowed"
+            : "bg-green-600 text-white hover:bg-green-500"
+        }`}
+        disabled={isRegenerating}
+      >
+        {isRegenerating ? "Regenerating..." : "Regenerate Code"}
+      </button>
+    )}
+  </div>
+</div>
+
 
       {/* Created At Section */}
-      {/* <motion.h3
+      <motion.h3
         className="text-lg font-medium text-green-400 mt-6 text-center"
         initial={{ y: -20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
@@ -108,7 +175,7 @@ const UserSection = () => {
       </motion.h3>
       <p className="text-gray-400 italic text-center mt-2 text-sm">
         {new Date(data.timestamp).toLocaleString()}
-      </p> */}
+      </p>
     </motion.div>
   );
 };
