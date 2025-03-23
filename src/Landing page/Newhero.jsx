@@ -62,7 +62,7 @@ const Hero = () => {
 
         {/* Reimagining Text */}
         <div className="absolute top-5 left-0 z-50 text-white text-6xl font-extrabold">
-          Revolutionizing
+         We are Revolutionizing
         </div>
 
         {/* Broader Pixora-related Text */}
