@@ -17,7 +17,7 @@ const IntegrationsCarousel = () => {
   ];
 
   return (
-    <section className="integrations-section px-4 py-0.5">
+    <section className="integrations-section px-4 py-4">
       <h4 className="text-2xl font-bold text-center text-black text-shadow flex items-center justify-center space-x-2">
         <TypingEffect
           text={['Pixora Integrations']} // Text you want to show
@@ -45,7 +45,7 @@ const IntegrationsCarousel = () => {
             {integrations.map((integration, index) => (
               <li key={index} className="about-partners_logo_list_item">
                 <motion.div
-                  className="logo-container relative w-30 h-30 bg-white rounded-xl shadow-xl flex items-center justify-center overflow-hidden transition-transform duration-300 transform-gpu border-4 border-transparent"
+                  className="logo-container relative w-25 h-25 bg-white rounded-xl shadow-xl flex items-center justify-center overflow-hidden transition-transform duration-300 transform-gpu border-4 border-transparent"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
@@ -68,7 +68,7 @@ const IntegrationsCarousel = () => {
             {integrations.map((integration, index) => (
               <li key={index} className="about-partners_logo_list_item">
                 <motion.div
-                  className="logo-container relative w-30 h-30 bg-white rounded-xl shadow-xl flex items-center justify-center overflow-hidden transition-transform duration-300 transform-gpu border-4 border-transparent"
+                  className="logo-container relative w-25 h-25 bg-white rounded-xl shadow-xl flex items-center justify-center overflow-hidden transition-transform duration-300 transform-gpu border-4 border-transparent"
                   whileHover={{
                     scale: 1.05,
                     boxShadow: "0 8px 20px rgba(0, 0, 0, 0.15)",
