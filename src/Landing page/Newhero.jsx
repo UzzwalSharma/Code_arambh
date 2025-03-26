@@ -103,14 +103,19 @@ const audioRef = useRef(null);
 const [isPlaying, setIsPlaying] = useState(false);
 
 useEffect(() => {
+  // Ensure the audio is preloaded
   audioRef.current = new Audio(soundEffect);
   audioRef.current.volume = 0.5; // Set initial volume
-  audioRef.current.loop = true;  // Keep looping the sound
+  audioRef.current.loop = true; // Keep looping the sound
+  audioRef.current.preload = 'auto'; // Preload the audio
 }, []);
 
 const handleMouseEnter = () => {
   if (!isPlaying) {
-    audioRef.current.play();
+    // Ensure the audio is played only on user interaction
+    audioRef.current.play().catch((error) => {
+      console.error('Error playing audio:', error);
+    });
     setIsPlaying(true);
   }
 };
