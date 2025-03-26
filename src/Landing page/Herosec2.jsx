@@ -65,9 +65,9 @@ const HeroSection = () => {
 
     {/* Enlarged & Improved Mockup Image */}
     <img
-      src="/marketing-creative-collage-with-phone.png"
+      src="/get in touch-Photoroom.png"
       alt="Mockup"
-      className="w-[320px] md:w-[420px] lg:w-[500px] transform rotate-[-8deg] drop-shadow-[0_10px_50px_rgba(0,255,153,0.5)] relative"
+      className="w-[300px] md:w-[400px] lg:w-[450px] transform rotate-[-8deg] drop-shadow-[0_10px_50px_rgba(0,255,153,0.5)] relative"
     />
   </motion.div>
 </div>

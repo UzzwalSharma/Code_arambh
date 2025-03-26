@@ -1,6 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect , useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { PlayIcon } from '@heroicons/react/24/solid';
+import soundEffect from "/cyberpunk-beat-64649.mp3"
+
 
 const synonyms = ["DEVELOPMENT", "CODING" , "INNOVATION", "WEBSITES", "CREATION"];
 
@@ -95,10 +97,38 @@ const Hero = () => {
     return `rgb(${r}, ${g}, ${b})`;
   };
 
+// sound effect 
+
+const audioRef = useRef(null);
+const [isPlaying, setIsPlaying] = useState(false);
+
+useEffect(() => {
+  audioRef.current = new Audio(soundEffect);
+  audioRef.current.volume = 0.5; // Set initial volume
+  audioRef.current.loop = true;  // Keep looping the sound
+}, []);
+
+const handleMouseEnter = () => {
+  if (!isPlaying) {
+    audioRef.current.play();
+    setIsPlaying(true);
+  }
+};
+
+const handleMouseLeave = () => {
+  if (isPlaying) {
+    audioRef.current.pause();
+    setIsPlaying(false);
+  }
+};
+
+
   return (
     <div
       className="relative w-full h-screen bg-black text-white overflow-hidden flex items-center justify-center"
       onMouseMove={handleMouseMove}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
       {/* Interactive Color-changing Grid */}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
@@ -220,25 +250,57 @@ const Hero = () => {
       {/* Centered Text Content */}
       <div className="relative z-10 flex flex-col justify-center items-center text-center space-y-6">
       <h1 className="text-4xl md:text-6xl font-extrabold text-white">
-        We are Revolutionizing{" "} <br />
+        We are Revolutionizing{" "} <br /> <br />
         <span className="relative inline-block w-[180px] h-[50px] perspective-1000">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={index}
-              className="absolute w-full h-full flex items-center justify-center text-green-400"
-              initial={{ rotateX: 90, opacity: 0 }}
-              animate={{ rotateX: 0, opacity: 1 }}
-              exit={{ rotateX: -90, opacity: 0 }}
-              transition={{ duration: 0.6, ease: "easeInOut" }}
-              style={{
-                transformStyle: "preserve-3d",
-                backfaceVisibility: "hidden",
-              }}
-            >
-              {synonyms[index]}
-            </motion.div>
-          </AnimatePresence>
-        </span>
+  <AnimatePresence mode="wait">
+    <motion.div
+      key={index}
+      className="absolute w-full h-full flex items-center justify-center text-green-400"
+      initial={{ rotateX: 90, opacity: 0 }}
+      animate={{ rotateX: 0, opacity: 1 }}
+      exit={{ rotateX: -90, opacity: 0 }}
+      transition={{ duration: 0.6, ease: "easeInOut" }}
+      style={{
+        transformStyle: "preserve-3d",
+        backfaceVisibility: "hidden",
+        position: "relative",
+      }}
+    >
+      {/* Changing text with neon sparks */}
+      <motion.span
+        className="relative font-extrabold text-green-400"
+        animate={{
+          textShadow: [
+            "0px 0px 5px #00ff00",
+            "0px 0px 15px #00ff00",
+            "0px 0px 5px #00ff00",
+          ],
+          transition: { duration: 0.5, repeat: Infinity, repeatType: "reverse" },
+        }}
+      >
+        {synonyms[index]}
+      </motion.span>
+
+      {/* Neon Sparks Effect */}
+      <motion.div
+        className="absolute -top-2 left-1/2 w-2 h-2 bg-green-400 rounded-full"
+        animate={{
+          opacity: [0, 1, 0],
+          scale: [0.5, 1.5, 0.5],
+          x: [-10, 10, -10],
+          y: [-10, 10, -10],
+        }}
+        transition={{
+          duration: 0.5,
+          repeat: Infinity,
+          repeatType: "reverse",
+          ease: "easeInOut",
+        }}
+      />
+    </motion.div>
+  </AnimatePresence>
+</span>
+
       </h1>
 
       <p className="text-lg md:text-xl text-gray-300 max-w-lg">
