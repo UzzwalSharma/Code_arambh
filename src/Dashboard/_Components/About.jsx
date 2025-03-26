@@ -44,10 +44,10 @@ const About = () => {
         transition={{ duration: 3, repeat: Infinity, repeatType: "mirror" }}
       >
         <img 
-          src="/flat-woman-vr-glasses-communication-with-ai-robot-metaverse.png" 
+          src="/about pixora.jpg" 
           alt="A boy using Pixora on his laptop"
-          width={500} 
-          height={500} 
+          width={300} 
+          height={300} 
           className="rounded-2xl shadow-lg drop-shadow-2xl" 
         />
       </motion.div>
