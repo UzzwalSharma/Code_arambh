@@ -22,13 +22,19 @@ export default function RatingComponent() {
       // Show success notification with the user's name
       toast.success(`${user?.fullName || user?.username}, your rating has been submitted successfully!`);
 
-      await fetch('/submit-rating', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ rating: selectedValue, userName: user?.fullName }),
+      const response = await fetch("https://pixora-s-backend.onrender.com/submit-rating", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ rating: selectedValue, userName: user?.fullName || user?.username }), // Pass userName here
       });
 
-      console.log("Successfully submitted rating:", selectedValue);
+      if (response.ok) {
+        console.log("Successfully submitted rating:", selectedValue);
+      } else {
+        console.error("Error submitting rating:", response.statusText);
+      }
     } catch (err) {
       console.error("Error submitting rating:", err);
       setIsReadOnly(false);
