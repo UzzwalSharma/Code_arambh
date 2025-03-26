@@ -17,7 +17,7 @@ export default function RatingComponent() {
       setRating(selectedValue);
 
       // Simulate async submission (replace this with an actual API call to save rating)
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      await new Promise((resolve) => setTimeout(resolve, 1000));
 
       // Show success notification with the user's name
       toast.success(`${user?.fullName || user?.username}, your rating has been submitted successfully!`);
