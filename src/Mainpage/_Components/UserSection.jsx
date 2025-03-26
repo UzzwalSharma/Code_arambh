@@ -130,7 +130,7 @@ const UserSection = () => {
   )}
 
   {/* Buttons */}
-  <div className="flex space-x-3 mt-4">
+  {/* <div className="flex space-x-3 mt-4">
     {isEditing ? (
       <button
         onClick={() => setIsEditing(false)}
@@ -160,7 +160,7 @@ const UserSection = () => {
         {isRegenerating ? "Regenerating..." : "Regenerate Code"}
       </button>
     )}
-  </div>
+  </div> */}
 </div>
 
 

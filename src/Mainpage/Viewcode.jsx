@@ -5,7 +5,7 @@ import Header from "./_Components/Header";
 import UserSection from "./_Components/UserSection";
 import CodeEditor from "./_Components/CodeEditor";
 import SubscriptionPopup from "./_Components/SubscriptionPopup";
-
+import Rating from "./_Components/Rating.jsx"
 function Viewcode() {
   const { id } = useParams();
   const [code, setCode] = useState(null);
@@ -135,117 +135,101 @@ function Viewcode() {
 };
 
   return (
-    <div className="flex flex-col min-h-screen">
-    <Header />
-  
-    <div className="grid grid-cols-1 md:grid-cols-5 p-5 flex-grow gap-8">
-      {/* Sidebar */}
-      <div className="md:col-span-1">
-        <UserSection />
-        {/* GitHub User Section */}
-        {user ? (
-          <div className="mt-4 text-center">
-            <h3 className="font-bold text-xl">Welcome, {user.login}! <br /><h4>This is your Pixora Panel</h4></h3>
-            <img
-              src={user.avatar_url}
-              alt="User Avatar"
-              className="rounded-full w-20 h-20 mx-auto border-4 border-gray-300 transition-all duration-300 ease-in-out transform hover:scale-105"
-            />
+ 
+        <div className="flex flex-col min-h-screen bg-gray-100">
+          {/* Header */}
+          <Header />
+    
+          {/* Main Grid Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 p-6 flex-grow">
+            {/* Sidebar Section */}
+            <aside className="md:col-span-1 space-y-6">
+              {/* User Info Section */}
+              <UserSection />
+    
+              {/* Rating Section */}
+              <div className="bg-white p-4 rounded-lg shadow-lg">
+                <h3 className="text-lg font-bold mb-2 text-center">Rate Your Experience</h3>
+                <Rating />
+              </div>
+    
+              {/* GitHub User Info */}
+              {user ? (
+                <div className="text-center bg-white p-4 rounded-lg shadow-lg">
+                  <h3 className="font-bold text-lg">Welcome, {user.login}!</h3>
+                  <h4 className="text-gray-600">This is your Pixora Panel</h4>
+                  <img
+                    src={user.avatar_url}
+                    alt="User Avatar"
+                    className="rounded-full w-20 h-20 mx-auto mt-3 border-4 border-gray-300 transition-transform hover:scale-105"
+                  />
+                </div>
+              ) : (
+                <button
+                  onClick={handleGitHubConnect}
+                  className="mt-4 w-full px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-700 text-white rounded-lg transition transform hover:scale-105"
+                >
+                  Connect to GitHub
+                </button>
+              )}
+            </aside>
+    
+            {/* Main Content Section */}
+            <main className="md:col-span-4 bg-white p-6 rounded-lg shadow-lg">
+              <CodeEditor code={code} />
+            </main>
           </div>
-        ) : (
-          <button
-            onClick={handleGitHubConnect}
-            className="mt-4 px-6 py-3 bg-gradient-to-r from-gray-500 to-gray-700 text-white rounded-lg hover:from-gray-600 hover:to-gray-800 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-gray-500 flex items-center space-x-2"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19V6l-7 7 7 7zm3 0V6l7 7-7 7z" />
-            </svg>
-            <span>Connect to GitHub</span>
-          </button>
-        )}
-      </div>
-  
-      {/* Main Content */}
-      <div className="col-span-4">
-        <CodeEditor code={code} />
-      </div>
-    </div>
-  
-    {/* User Panel (80vw, Horizontal) with GitHub Details */}
-    <div className="w-[80vw] bg-white rounded-lg  p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-2 border-green-400 shadow-[0_0_15px_#00ff00]">
-    <button
-          onClick={() => setShowPopup(true)}
-          className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg hover:from-green-500 hover:to-blue-600 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-green-500 flex items-center space-x-2"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17l5 5m0 0l-5 5m5-5H10a2 2 0 01-2-2V4a2 2 0 012-2h12a2 2 0 012 2v12a2 2 0 01-2 2h-2z"/>
-          </svg>
-          <span>Start Expert Call</span>
-        </button>
-  {user ? (
-    <>
-      {/* GitHub User Info */}
-      <div className="flex items-center gap-4">
-        <img
-          src={user.avatar_url}
-          alt="GitHub Avatar"
-          className="w-16 h-16 rounded-full border-2 border-gray-300"
-        />
-        <div>
-          <h3 className="text-lg font-bold">{user.name || user.login}</h3>
-          <p className="text-gray-600">{user.bio || "No bio available"}</p>
-          <div className="text-sm text-gray-500">
-            <p>👥 Followers: {user.followers} | Following: {user.following}</p>
-            <p>📂 Public Repos: {user.public_repos}</p>
-          </div>
+    
+          {/* User Panel & GitHub Info */}
+          <section className="w-[80vw] bg-white rounded-lg p-6 flex flex-col md:flex-row justify-between items-center mx-auto mt-6 border-2 border-green-400 shadow-lg">
+            <button
+              onClick={() => setShowPopup(true)}
+              className="px-6 py-3 bg-gradient-to-r from-green-400 to-blue-500 text-white rounded-lg transition transform hover:scale-105"
+            >
+              Start Expert Call
+            </button>
+    
+            {user ? (
+              <div className="flex items-center gap-4">
+                <img
+                  src={user.avatar_url}
+                  alt="GitHub Avatar"
+                  className="w-16 h-16 rounded-full border-2 border-gray-300"
+                />
+                <div>
+                  <h3 className="text-lg font-bold">{user.name || user.login}</h3>
+                  <p className="text-gray-600">{user.bio || "No bio available"}</p>
+                  <div className="text-sm text-gray-500">
+                    <p>👥 Followers: {user.followers} | Following: {user.following}</p>
+                    <p>📂 Public Repos: {user.public_repos}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <p className="text-gray-600">Please connect your GitHub account to see user details.</p>
+            )}
+          </section>
+    
+          {/* Subscription Popup */}
+          {showPopup && <SubscriptionPopup onClose={() => setShowPopup(false)} onVerify={handleVerify} />}
+    
+          {/* Footer */}
+          <footer className="text-black py-6 mt-auto">
+            <div className="text-center">
+              <p className="text-sm md:text-base font-bold">
+                Crafted with ❤️ by <span className="text-green-400">Team Syntax Squad</span>
+              </p>
+              <p className="font-bold text-gray-700">
+                Ham hi wo jinki wajah se Designers ki job jaegi! (Bas, mazaak kar rahe hain 😜)
+              </p>
+            </div>
+          </footer>
         </div>
-      </div>
-
-      {/* Action Buttons */}
-      <div className="flex flex-wrap justify-center md:justify-end gap-4 mt-4 md:mt-0">
-     
-
-        <button
-          onClick={handlePushToGitHub}
-          className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-500 flex items-center space-x-2"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 4v16m-8-8h16" />
-          </svg>
-          <span>Push to GitHub</span>
-        </button>
-      </div>
-    </>
-  ) : (
-    <div className="text-center">
-      <p className="text-gray-600">Please connect your GitHub account to see user details.</p>
-    </div>
-  )}
-</div>
-
-  
-    {/* Render Subscription Popup */}
-    {showPopup && (
-      <SubscriptionPopup
-        onClose={() => setShowPopup(false)}
-        onVerify={handleVerify}
-      />
-    )}
-  
-    <footer className="text-black py-6 mt-auto">
-      <div className="flex flex-col justify-center items-center space-y-2">
-        <p className="text-sm md:text-base text-center font-bold">
-          Crafted with ❤️ by <span className="font-extrabold text-green-400">Team Syntax Squad</span>
-        </p>
-        <p className="text-center font-bold text-gray-700">
-          Ham hi wo jinki wajah se Designers ki job jaegi! (Bas, mazaak kar rahe hain 😜)
-        </p>
-      </div>
-    </footer>
-  </div>
+      );
+    }
+    
   
   
-  );
-}
+ 
 
 export default Viewcode;
