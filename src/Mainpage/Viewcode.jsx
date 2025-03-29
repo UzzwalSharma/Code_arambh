@@ -208,14 +208,14 @@ function Viewcode() {
             ) : (
               <p className="text-gray-600">Please connect your GitHub account to see user details.</p>
             )}
-         
-          </section>
-        <button
+         <button
     onClick={handlePushToGitHub}
     className="px-6 py-3 bg-gradient-to-r from-gray-700 to-black text-white rounded-lg transition transform hover:scale-105"
   >
     Push to GitHub 🚀
   </button>
+          </section>
+        
           {/* Subscription Popup */}
           {showPopup && <SubscriptionPopup onClose={() => setShowPopup(false)} onVerify={handleVerify} />}
     
